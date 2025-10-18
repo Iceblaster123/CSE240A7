@@ -15,4 +15,6 @@ int main(){
         printf("Press 'q' to quit or any other key to continue:\n");
         scanf(" %c", &quit);
     }
-}
+
+    printf("Bye Bye!\n");
+}   

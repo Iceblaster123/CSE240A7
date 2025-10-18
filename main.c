@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "bst.h"
 
+/*
+Basic main function that allows us to keep running the same loop unless the use presses 'q'
+*/
 int main(){
     node *gameTree = create_game_tree();
     char quit = 'a';

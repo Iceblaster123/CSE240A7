@@ -10,6 +10,12 @@ typedef struct node{
     struct node *left;
 }node;
 
+
+/*
+Recursively adds a node
+If the node is null, set the root to the new node
+Else, check the data values and add it to the appropriate spot
+*/ 
 node* insert(node *root, int data, char *question, char *guess){
     if(root == NULL){
         node *newNode = malloc(sizeof(node));
@@ -29,6 +35,9 @@ node* insert(node *root, int data, char *question, char *guess){
     return root;
 }
 
+/*
+Just used to create the original tree, added because it was shown in the instruction set
+*/
 node* create_game_tree(){
     node* root = NULL;
     root = insert(root, 100, "Does it grow underground?", "");
@@ -49,6 +58,10 @@ node* create_game_tree(){
     return root;
 }
 
+/*
+This was just for testing for me to make sure that everything was printing
+Not used in the final code, but just prints the BST
+*/
 void printGameTree(node* root){
     if(root != NULL){
         printGameTree(root->right);
@@ -56,6 +69,11 @@ void printGameTree(node* root){
         printGameTree(root->left);
     }
 }
+
+/*
+This checks the node that we give it and sees if the guess is empty or the question is empty (One must always be empty)
+It then prints out the one that isnt empty and returns an int value depending on which one it prints
+*/
 
 int printQuestionOrGuess(node *root){
     if(strcmp(root->guess, "") != 0){
@@ -68,6 +86,10 @@ int printQuestionOrGuess(node *root){
         return -1;
     }
 }
+
+/*
+This is what we use to run the game
+*/
 
 void PlayGuessingGame(node* root){
     int gOrq = 0;
@@ -87,22 +109,16 @@ void PlayGuessingGame(node* root){
             break;
         case 'n':
             printf("You win!\n");
-            // int c;
-            // while ((c = getchar()) != '\n' && c != EOF);
+            // char *question[256];
+            // char *guess[256];
 
-            // char question[100];
-            // printf("Please give me a question to help with the next rounds: ");
-            // fgets(question, sizeof(question), stdin);
-            // question[strcspn(question, "\n")] = 0; // remove newline
+            // printf("Please enter a question that will help me guess: ");
+            // // scanf("%24[^\n]s", question);
+            // // printf("Please enter the fruit or vegetable you were thinking of: ");
+            // // scanf("%24[^\n]s", guess);
 
-            // char guess[100];
-            // printf("Please give me the fruit or vegetable that you were thinking of: ");
-            // fgets(guess, sizeof(guess), stdin);
-            // guess[strcspn(guess, "\n")] = 0; // remove newline
-
-            // root->left = insert(root->left, root->data / 2, question, "");
-            // root->left->right = insert(root->left->right, root->data / 2, "", guess);
-            // break;
+            // insert(root, root->data / 2, question, "");
+            // insert(root, (root->data / 2) + (root -> data), "", guess);
         default:
             break;
     }
